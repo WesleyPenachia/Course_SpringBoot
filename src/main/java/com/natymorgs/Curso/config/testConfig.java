@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.natymorgs.Curso.Entities.Category;
 import com.natymorgs.Curso.Entities.Order;
 import com.natymorgs.Curso.Entities.OrderItem;
+import com.natymorgs.Curso.Entities.Payment;
 import com.natymorgs.Curso.Entities.Product;
 import com.natymorgs.Curso.Entities.User;
 import com.natymorgs.Curso.Entities.enums.OrderStatus;
@@ -81,5 +82,9 @@ public class testConfig implements CommandLineRunner {
 		
 		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 		
+		Payment pay1 = new Payment(null, Instant.parse("2019-06-20T21:53:07Z"), o1);
+		o1.setPayment(pay1);
+		
+		orderRepository.save(o1);
 	}
 }
